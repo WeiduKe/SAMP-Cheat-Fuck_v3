@@ -14,11 +14,11 @@ script_description('QQ: 487432640')
 local event = require("lib.samp.events") --- @Events
 local Vector3D = require ("lib.vector3d") --- @Vector3D
 
-local switch = false --- @Bool Ö¸¶¨Ä¿±ê
-local switch_all = false --- @Bool È«ÆÁÄ¿±ê
+local switch = false --- @Bool æŒ‡å®šç›®æ ‡
+local switch_all = false --- @Bool å…¨å±ç›®æ ‡
 
-local speed = 99.98 --- @number Æû³µËÙ¶È
-local tid = 0 --- @number Ö¸¶¨Íæ¼ÒID
+local speed = 99.98 --- @number æ±½è½¦é€Ÿåº¦
+local tid = 0 --- @number æŒ‡å®šç©å®¶ID
 
 
 
@@ -26,18 +26,18 @@ local tid = 0 --- @number Ö¸¶¨Íæ¼ÒID
 --- @Main
 function main()
     repeat wait(0) until isSampAvailable() wait(3000)
-    sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}¼ÓÔØ³É¹¦...', -1)
+    sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}åŠ è½½æˆåŠŸ...', -1)
     sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}By Weidu QQ:487432640', -1)
     sampRegisterChatCommand('.fk', fk)
     sampRegisterChatCommand('.fka', fuck_all)
     while true do wait(0)
         if (switch ~= false) and isCharOnFoot(PLAYER_PED) then
             switch = false
-            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ÄãÀë¿ªÁËÆû³µ£¬²å¼şÒÑÍ£Ö¹Ö´ĞĞ', -1)
+            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ä½ ç¦»å¼€äº†æ±½è½¦ï¼Œæ’ä»¶å·²åœæ­¢æ‰§è¡Œ', -1)
         end
         if (switch_all ~= false) and isCharOnFoot(PLAYER_PED) then
             switch_all = false
-            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ÄãÀë¿ªÁËÆû³µ£¬²å¼şÒÑÍ£Ö¹Ö´ĞĞ', -1)
+            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ä½ ç¦»å¼€äº†æ±½è½¦ï¼Œæ’ä»¶å·²åœæ­¢æ‰§è¡Œ', -1)
         end
     end
 end
@@ -46,35 +46,34 @@ end
 function fk(args)
     if switch then
         switch = false
-        return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}¹Ø±Õ£¡', -1)
+        return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}å…³é—­ï¼', -1)
     end
     if not string.match(args, '%d+') then
-        sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ÇëÊäÈë/.fk [id]', -1)
+        sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}è¯·è¾“å…¥/.fk [id]', -1)
     else
         local _, ped = sampGetCharHandleBySampPlayerId(args)
         if not _ then
-            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}Ö¸¶¨µÄÍæ¼Ò²»ÔÚ·¶Î§ÄÚ»òÕß²»ÔÚÏß£¡', -1)
+            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}æŒ‡å®šçš„ç©å®¶ä¸åœ¨èŒƒå›´å†…æˆ–è€…ä¸åœ¨çº¿ï¼', -1)
         else
             if isCharOnFoot(PLAYER_PED) then
-                sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ÄãÒ»¶¨ÒªÔÚÆû³µÄÚ£¡', -1)
+                sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ä½ ä¸€å®šè¦åœ¨æ±½è½¦å†…ï¼', -1)
             else
                 if isCharOnFoot(ped) then
-                    return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}¶Ô·½Ò»¶¨ÒªÔÚÆû³µÄÚ£¡', -1)
+                    return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}å¯¹æ–¹ä¸€å®šè¦åœ¨æ±½è½¦å†…ï¼', -1)
                 else
                     tid = tonumber(args)
                     switch = true
-                    getVehicleID()
                     lua_thread.create(function()
                         while switch do
                             wait(0)
                             local _, ped = sampGetCharHandleBySampPlayerId(args)
                             if not _ then
                                 switch = false
-                                return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}Í£Ö¹Ö´ĞĞ£¬Íæ¼Ò±»R·É»òÕßÀë¿ªÁË·¶Î§', -1)
+                                return sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}åœæ­¢æ‰§è¡Œï¼Œç©å®¶è¢«Ré£æˆ–è€…ç¦»å¼€äº†èŒƒå›´', -1)
                             end
                         end
                     end)
-                    sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}¿ªÆô£¡', -1)
+                    sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}å¼€å¯ï¼', -1)
                 end
             end
         end
@@ -85,13 +84,13 @@ end
 function fuck_all()
     if switch_all then
         switch_all = false
-        sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}Fuck All ¹Ø±Õ£¡', -1)
+        sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}Fuck All å…³é—­ï¼', -1)
     else
         if isCharOnFoot(PLAYER_PED) then
-            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ÄãÒ»¶¨ÒªÔÚÆû³µÄÚ£¡', -1)
+            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {F70202}ä½ ä¸€å®šè¦åœ¨æ±½è½¦å†…ï¼', -1)
         else
             switch_all = true
-            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}Fuck All ¿ªÆô£¡°´ÓÒ¼ü¼¤»î£¡', -1)
+            sampAddChatMessage('{F61D00}[{00F8FA}Fuck_v3{F61D00}]: {05FB00}Fuck All å¼€å¯ï¼æŒ‰å³é”®æ¿€æ´»ï¼', -1)
         end
     end
 end
@@ -119,13 +118,12 @@ function event.onVehicleSync(id)
 end
 
 function event.onSendVehicleSync(data)
-    local vehicleid = getVehicleID()
-    if switch_all and vehicleid then
-        local X, Y, Z = getCharCoordinates(PLAYER_PED) --- »ñÈ¡Íæ¼Ò×ø±ê @PLTAYER_PED
+    if switch_all then
+        local X, Y, Z = getCharCoordinates(PLAYER_PED) --- è·å–ç©å®¶åæ ‡ @PLTAYER_PED
         local _, ped = findAllRandomCharsInSphere(X, Y, Z, 10000, true, false)
         local _, show = sampGetPlayerIdByCharHandle(ped)
         if _ then
-            if isKeyDown(0x02) then --- ÓÒ¼ü
+            if isKeyDown(0x02) then --- å³é”®
                 local tX, tY, tZ = getCharCoordinates(ped)
                 local cameraCoordinates = Vector3D(getActiveCameraCoordinates())
                 local cameraPointAt = Vector3D(getActiveCameraPointAt())
@@ -156,7 +154,7 @@ end
 function samp_create_sync_data(sync_type, copy_from_player)
     local ffi = require 'ffi'
     local sampfuncs = require 'sampfuncs'
-    --- À´×Ô SAMP.Lua·â×°ÒÀÀµÏî
+    --- æ¥è‡ª SAMP.Luaå°è£…ä¾èµ–é¡¹
     local raknet = require 'samp.raknet'
     require 'samp.synchronization'
     copy_from_player = copy_from_player or true
@@ -175,7 +173,7 @@ function samp_create_sync_data(sync_type, copy_from_player)
     local data_type = 'struct ' .. sync_info[1]
     local data = ffi.new(data_type, {})
     local raw_data_ptr = tonumber(ffi.cast('uintptr_t', ffi.new(data_type .. '*', data)))
-    --- ½«Íæ¼ÒµÄÍ¬²½Êı¾İ¸´ÖÆµ½·ÖÅäµÄÄÚ´æÖĞ
+    --- å°†ç©å®¶çš„åŒæ­¥æ•°æ®å¤åˆ¶åˆ°åˆ†é…çš„å†…å­˜ä¸­
     if copy_from_player then
         local copy_func = sync_info[3]
         if copy_func then
@@ -188,7 +186,7 @@ function samp_create_sync_data(sync_type, copy_from_player)
             copy_func(player_id, raw_data_ptr)
         end
     end
-    --- ·¢ËÍÊı¾İ°ü
+    --- å‘é€æ•°æ®åŒ…
     local func_send = function()
         local bs = raknetNewBitStream()
         raknetBitStreamWriteInt8(bs, sync_info[2])
@@ -196,7 +194,7 @@ function samp_create_sync_data(sync_type, copy_from_player)
         raknetSendBitStreamEx(bs, sampfuncs.HIGH_PRIORITY, sampfuncs.UNRELIABLE_SEQUENCED, 1)
         raknetDeleteBitStream(bs)
     end
-    --- ·ÃÎÊÍ¬²½Êı¾İÔª±í
+    --- è®¿é—®åŒæ­¥æ•°æ®å…ƒè¡¨
     local mt = {
         __index = function(t, index)
             return data[index]
